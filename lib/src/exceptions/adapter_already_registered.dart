@@ -1,0 +1,1 @@
+class AdapterAlreadyRegisteredException implements Exception {}
