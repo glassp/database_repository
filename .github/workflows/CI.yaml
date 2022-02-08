@@ -17,6 +17,9 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
+      - name: Install global dependencies
+        run: dart pub global activate coverage
+
       - name: Check Code Formating
         run: dart format . -o none --set-exit-if-changed
 
@@ -24,7 +27,10 @@ jobs:
         run: dart analyze --fatal-infos
 
       - name: Running Tests
-        run: dart test --coverage=coverage
+        run: dart test --coverage=coverage || exit 0
+
+      - name: Convert Coverage to lcov
+        run: format_coverage -l -i coverage -o coverage.lcov
 
       - name: Upload Coverage to CodeCov
         uses: codecov/codecov-action@v1

@@ -12,8 +12,5 @@ github:
     addLabel: true
 
 tasks:
-  - name: Check installation
-    command: flutter doctor
-
-  - name: Fetch dependencies 
-    command: flutter pub get
+  - name: Fetch dependencies
+    command: dart pub get
