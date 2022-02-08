@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main, beta, dev ]
+    branches: [main, beta, dev]
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
         run: dart pub get
 
       - name: Check Code Formating
-        run: dart format -o none --set-exit-if-changed
+        run: dart format . -o none --set-exit-if-changed
 
       - name: Check Code Quality
         run: dart analyze --fatal-infos
