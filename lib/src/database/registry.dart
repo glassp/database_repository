@@ -10,8 +10,10 @@ abstract class DatabaseAdapterRegistry {
   /// The first adapter will be automatically set as default.
   /// The default adapter can be overwriten by setting `useAsDefault` to true.
   ///
-  /// Thorws a [AdapterAlreadyRegisteredException] if a adapter with the given name already exists.
-  /// Throws a [AdapterNameViolationException] if the adapter name is the empty string.
+  /// Throws a [AdapterAlreadyRegisteredException] if a adapter with the given
+  /// name already exists.
+  /// Throws a [AdapterNameViolationException] if the adapter name is the
+  /// empty string.
   static void register(DatabaseAdapter adapter, {bool useAsDefault = false}) {
     if (_registeredAdapters.containsKey(adapter.name)) {
       throw AdapterAlreadyRegisteredException();
@@ -22,7 +24,8 @@ abstract class DatabaseAdapterRegistry {
     }
 
     _registeredAdapters.putIfAbsent(adapter.name, () => adapter);
-    // The first adapter to be registered will be the default adapter and will use the name "";
+    // The first adapter to be registered will be the default adapter and
+    //will use the name "";
     _registeredAdapters.putIfAbsent("", () => adapter);
 
     if (useAsDefault) {
@@ -32,12 +35,13 @@ abstract class DatabaseAdapterRegistry {
 
   /// Grabs a adapter from the registry.
   ///
-  /// Thows a [NoSuchAdapterException] if a adapter with the given name does not exist.
-  static getAdapter([String name = ""]) {
+  /// Thows a [NoSuchAdapterException] if a adapter with the given name
+  /// does not exist.
+  static DatabaseAdapter getAdapter([String name = ""]) {
     if (_registeredAdapters.containsKey(name)) {
       throw NoSuchAdapterException();
     }
 
-    return _registeredAdapters[name];
+    return _registeredAdapters[name]!;
   }
 }

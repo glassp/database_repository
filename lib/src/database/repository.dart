@@ -1,22 +1,30 @@
 import '../deps.dart';
 
-/// A repository for databases exposing utility functions to easily persist objects to a database
+/// A repository for databases exposing utility functions to easily persist
+/// objects to a database
 /// in a database independent way
 class DatabaseRepository<T extends DatabaseStorable>
     extends DatabaseAdapterRegistry with QueryMixin<T> {
+  /// The serializer that the repository can use to convert between an object
+  /// and JSON
   final SerializerInterface<T> serializer;
+
+  /// The [DatabaseAdapter] that is used to persist the objects
   late final DatabaseAdapter adapter;
 
   /// Constructs a DatabaseRepository with the given serializer.
-  /// If no adapter was provided it will lookup the default adapter from the registry
-  /// Thows a [NoSuchAdapterException] if neither an adapter was provided not a default adapter was registered;
+  /// If no adapter was provided it will lookup the default adapter from the
+  /// registry
+  /// Thows a [NoSuchAdapterException] if neither an adapter was provided not
+  /// a default adapter was registered;
   DatabaseRepository({required this.serializer, DatabaseAdapter? adapter}) {
     this.adapter = adapter ?? DatabaseAdapterRegistry.getAdapter();
   }
 
   /// Constructs a DatabaseRepository with the given serializer.
   /// Looksup the named adapter from the registry
-  /// Thows a [NoSuchAdapterException] if neither an adapter was provided not a default adapter was registered;
+  /// Thows a [NoSuchAdapterException] if neither an adapter was provided not
+  /// a default adapter was registered;
   DatabaseRepository.fromRegistry(
       {required this.serializer, required String name}) {
     adapter = DatabaseAdapterRegistry.getAdapter(name);
@@ -64,7 +72,8 @@ class DatabaseRepository<T extends DatabaseStorable>
     }
   }
 
-  /// Gets and executes a read Query to fetch an entity of Type [T] with the given `id`
+  /// Gets and executes a read Query to fetch an entity of Type [T] with the
+  /// given `id`
   ///
   /// Throws [QueryFailedException] if the query was not successful
   Future<T> read(String id) async {
@@ -77,7 +86,8 @@ class DatabaseRepository<T extends DatabaseStorable>
     return serializer.deserialize(result.payload);
   }
 
-  /// Gets and executes a read Query to fetch an entity of Type [T] with the given `id`
+  /// Gets and executes a read Query to fetch an entity of Type [T] with the
+  /// given `id`
   ///
   /// Throws [QueryFailedException] if the query was not successful
   Future<List<T>> readAll() async {
@@ -100,7 +110,8 @@ class DatabaseRepository<T extends DatabaseStorable>
     return elems;
   }
 
-  /// Gets and executes a read Query to fetch an entity of Type [T] with the given `id`
+  /// Gets and executes a read Query to fetch an entity of Type [T] with the
+  /// given `id`
   ///
   /// Throws [QueryFailedException] if the query was not successful
   Future<List<T>> readAllWhere({JSON where = const {}, int? limit}) async {

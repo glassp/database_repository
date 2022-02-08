@@ -20,7 +20,8 @@ mixin QueryMixin<T extends DatabaseStorable> {
         payload: element.toJson(),
       );
 
-  /// generates a query that execute a read operation on the database by applying a search function
+  /// generates a query that execute a read operation on the database by
+  /// applying a search function
   Query getReadAllWhereQuery({
     required Type type,
     JSON where = const {},
@@ -33,14 +34,16 @@ mixin QueryMixin<T extends DatabaseStorable> {
         limit: limit,
       );
 
-  /// generates a query that execute a read operation on the database for an object with a given id.
+  /// generates a query that execute a read operation on the database for an
+  /// object with a given id.
   Query getReadQuery(String id, {required Type type, JSON where = const {}}) =>
       Query(
           entityName: type.toString(),
           action: QueryAction.read,
           payload: {"id": id});
 
-  /// generates a query that execute a read operation on the database fetching all objects
+  /// generates a query that execute a read operation on the database fetching
+  /// all objects
   Query getReadAllQuery({required Type type}) =>
       getReadAllWhereQuery(type: type);
 
@@ -50,7 +53,8 @@ mixin QueryMixin<T extends DatabaseStorable> {
       action: QueryAction.delete,
       payload: element.toJson());
 
-  /// generates a create or update query depending if the object should be updatedIf it exists
+  /// generates a create or update query depending if the object should be
+  /// updated if it exists
   Query getStoreQuery(T element, {bool updateIfExists = false}) {
     if (updateIfExists) {
       return getUpdateQuery(element);

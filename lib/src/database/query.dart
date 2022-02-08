@@ -1,6 +1,7 @@
 import '../deps.dart';
 
-/// An object containing all information about an Object that should be transfered to the Database.
+/// An object containing all information about an Object that should be 
+/// transfered to the Database.
 class Query {
   /// The serialized object that should be transfered
   final JSON payload;
@@ -22,7 +23,7 @@ class Query {
     required this.entityName,
     required this.action,
     this.where = const {},
-    this.limit = null,
+    this.limit,
     this.payload = const {},
   });
 
@@ -30,6 +31,7 @@ class Query {
   String toString() => "<Query on $entityName of type ${action.name}>";
 }
 
+/// Which action the query should execute
 enum QueryAction {
   /// only store if element is new
   create,
