@@ -1,6 +1,6 @@
 import '../deps.dart';
 
-/// An object containing all information about an Object that should be 
+/// An object containing all information about an Object that should be
 /// transfered to the Database.
 class Query {
   /// The serialized object that should be transfered

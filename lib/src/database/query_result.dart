@@ -8,7 +8,7 @@ class QueryResult {
   /// If the [Query] was successful
   final bool wasSuccessful;
 
-  /// May contain a payload json if the [Query] was successful or an object 
+  /// May contain a payload json if the [Query] was successful or an object
   /// containing an ERROR key with the message
   final JSON payload;
 
