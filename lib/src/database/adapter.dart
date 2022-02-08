@@ -4,5 +4,5 @@ import '../deps.dart';
 abstract class DatabaseAdapter with QueryMixin {
     /// The name of the adapter.
     /// Must be unique when registering this DatabaseAdapter
-    final String name;
+    String get name;
 }

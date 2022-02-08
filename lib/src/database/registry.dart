@@ -1,8 +1,10 @@
+// ignore_for_file: avoid_classes_with_only_static_members
+
 import '../deps.dart';
 
 /// Class for managing DatabaseAdapters
 abstract class DatabaseAdapterRegistry {
-    static Map<String, DatabaseAdapter> _registeredAdapters = {};
+    static final Map<String, DatabaseAdapter> _registeredAdapters = {};
 
     /// Registers a new adapter.
     /// The first adapter will be automatically set as default.
@@ -11,7 +13,7 @@ abstract class DatabaseAdapterRegistry {
     /// Thorws a [AdapterAlreadyRegisteredException] if a adapter with the given name already exists.
     /// Throws a [AdapterNameViolationException] if the adapter name is the empty string.
     static void register(DatabaseAdapter adapter, {bool useAsDefault = false}) {
-        if (_registeredAdapters.contains(adapter.name)) {
+        if (_registeredAdapters.containsKey(adapter.name)) {
             throw AdapterAlreadyRegisteredException();
         }
 
@@ -32,7 +34,7 @@ abstract class DatabaseAdapterRegistry {
     ///
     /// Thows a [NoSuchAdapterException] if a adapter with the given name does not exist.
     static getAdapter([String name = ""]) {
-        if (_registeredAdapters.contains(name)) {
+        if (_registeredAdapters.containsKey(name)) {
             throw NoSuchAdapterException();
         }
 
