@@ -1,8 +1,8 @@
 import 'package:database_repository/database_repository.dart';
 import 'package:test/test.dart';
 
-import '../../__mocks__/null_database_adapter.dart';
-import '../../__mocks__/user.dart';
+import '../../__fake__/null_database_adapter.dart';
+import '../../__fake__/user.dart';
 
 void main() {
   final user = User();
