@@ -29,7 +29,7 @@ void main() {
     expect((await repository.update(user)).id, equals('DB-0'));
   });
   test('delete', () async {
-    expect((await repository.create(user)).id, equals('DB-0'));
+    await expectLater(repository.delete(user), completes);
   });
   test('read', () async {
     expect((await repository.read('DB-0')).id, equals('DB-0'));
