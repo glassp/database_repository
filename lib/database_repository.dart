@@ -1,3 +1,14 @@
+export 'src/constrains/constraint.dart';
+export 'src/constrains/contains.dart';
+export 'src/constrains/equals.dart';
+export 'src/constrains/greater_than.dart';
+export 'src/constrains/in_list.dart';
+export 'src/constrains/is_false.dart';
+export 'src/constrains/is_null.dart';
+export 'src/constrains/is_set.dart';
+export 'src/constrains/is_true.dart';
+export 'src/constrains/less_than.dart';
+
 export 'src/database/adapter.dart';
 export 'src/database/query.dart';
 export 'src/database/query_result.dart';

@@ -24,7 +24,7 @@ mixin QueryMixin<T extends DatabaseStorable> {
   /// applying a search function
   Query getReadAllWhereQuery({
     required Type type,
-    JSON where = const {},
+    List<Constraint> where = const [],
     int? limit,
   }) =>
       Query(

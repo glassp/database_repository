@@ -114,7 +114,8 @@ class DatabaseRepository<T extends DatabaseStorable>
   /// given `id`
   ///
   /// Throws [QueryFailedException] if the query was not successful
-  Future<List<T>> readAllWhere({JSON where = const {}, int? limit}) async {
+  Future<List<T>> readAllWhere(
+      {List<Constraint> where = const [], int? limit}) async {
     final result = await executeQuery(
         getReadAllWhereQuery(type: T, where: where, limit: limit));
 
@@ -125,7 +126,7 @@ class DatabaseRepository<T extends DatabaseStorable>
     final elems = <T>[];
     for (final json in result.payload.values) {
       if (json.runtimeType != JSON) {
-        // TODO error
+        continue;
       }
 
       final elem = serializer.deserialize(json);

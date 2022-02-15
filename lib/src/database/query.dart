@@ -7,7 +7,7 @@ class Query {
   final JSON payload;
 
   /// A JSON object containing information on how to apply filter
-  final JSON where;
+  final List<Constraint> where;
 
   /// The name of the class that should be transfered
   final String entityName;
@@ -22,7 +22,7 @@ class Query {
   Query({
     required this.entityName,
     required this.action,
-    this.where = const {},
+    this.where = const [],
     this.limit,
     this.payload = const {},
   });
