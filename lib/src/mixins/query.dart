@@ -36,11 +36,12 @@ mixin QueryMixin<T extends DatabaseStorable> {
 
   /// generates a query that execute a read operation on the database for an
   /// object with a given id.
-  Query getReadQuery(String id, {required Type type, JSON where = const {}}) =>
-      Query(
-          entityName: type.toString(),
-          action: QueryAction.read,
-          payload: {"id": id});
+  Query getReadQuery(String id, {required Type type}) => Query(
+        entityName: type.toString(),
+        action: QueryAction.read,
+        payload: {"id": id},
+        limit: 1,
+      );
 
   /// generates a query that execute a read operation on the database fetching
   /// all objects

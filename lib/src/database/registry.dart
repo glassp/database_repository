@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_classes_with_only_static_members
 
+import 'package:meta/meta.dart';
+
 import '../deps.dart';
 
 /// Class for managing DatabaseAdapters
@@ -38,10 +40,16 @@ abstract class DatabaseAdapterRegistry {
   /// Thows a [NoSuchAdapterException] if a adapter with the given name
   /// does not exist.
   static DatabaseAdapter getAdapter([String name = ""]) {
-    if (_registeredAdapters.containsKey(name)) {
+    if (!_registeredAdapters.containsKey(name)) {
       throw NoSuchAdapterException();
     }
 
     return _registeredAdapters[name]!;
   }
+
+  /// Returns a list of all registered keys and their Adapters class name
+  @visibleForTesting
+  static Map<String, Type> get registeredAdapters => _registeredAdapters.map(
+        (key, value) => MapEntry(key, value.runtimeType),
+      );
 }

@@ -99,8 +99,8 @@ class DatabaseRepository<T extends DatabaseStorable>
 
     final elems = <T>[];
     for (final json in result.payload.values) {
-      if (json.runtimeType != JSON) {
-        // TODO error
+      if (json is! JSON) {
+        continue;
       }
 
       final elem = serializer.deserialize(json);
