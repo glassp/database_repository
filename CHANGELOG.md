@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.2
+ - **DOCS:** 
+    - adding badges to README.md
+
 ## 1.0.1
  - **DOCS:** 
     - adjusted description in pubspec.yaml
