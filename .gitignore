@@ -8,3 +8,7 @@
 build/
 coverage/
 coverage.lcov
+**/*.mocks.dart
+**/*.mock.dart
+**/__mock__/
+**/__mocks__/
