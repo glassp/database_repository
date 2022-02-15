@@ -1,6 +1,5 @@
 import '../deps.dart';
 
-
 /// Checks if the element in question is a boolean and if it is false
 class IsFalse extends Constraint {
   /// Checks if the element in question is a boolean and if it is false
