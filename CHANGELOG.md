@@ -1,4 +1,7 @@
 # CHANGELOG
+## 1.2.1
+ - **BUG FIX**
+   - actually export ConstraintUnsupportedException -.-'
 
 ## 1.2.0
  - **FEATURE**

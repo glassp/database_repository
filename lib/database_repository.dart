@@ -17,6 +17,7 @@ export 'src/database/repository.dart';
 
 export 'src/exceptions/adapter_already_registered.dart';
 export 'src/exceptions/adapter_name_violation.dart';
+export 'src/exceptions/constraint_unsupported.dart';
 export 'src/exceptions/no_such_adapter.dart';
 export 'src/exceptions/query_failed.dart';
 
