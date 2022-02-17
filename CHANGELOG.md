@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.1
+ - **IMPROVEMENT**
+    - removed pubspec.lock to prevent dependency conflicts
+    
 ## 1.1.0
  - **BREAKING CHANGE:**
    - where conditions now use List of Constraint classes instead of arbitary JSON

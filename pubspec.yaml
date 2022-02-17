@@ -1,6 +1,6 @@
 name: database_repository
 description: A database independent repository style implementation for dart and flutter
-version: 1.1.0
+version: 1.1.1
 repository: https://github.com/glassp/database_repository
 
 environment:
