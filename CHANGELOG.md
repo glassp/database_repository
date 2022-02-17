@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.2.0
+ - **FEATURE**
+    - added new Constraint NotEqual
+    - added new Constraint NotInList
+    - added new Exception ConstraintUnsupportedException
+
 ## 1.1.1
  - **IMPROVEMENT**
     - removed pubspec.lock to prevent dependency conflicts
