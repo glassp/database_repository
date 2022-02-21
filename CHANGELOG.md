@@ -1,4 +1,8 @@
 # CHANGELOG
+## 1.2.2
+ - **DOCS:** 
+    - add example/README.md
+
 ## 1.2.1
  - **BUG FIX**
    - actually export ConstraintUnsupportedException -.-'
