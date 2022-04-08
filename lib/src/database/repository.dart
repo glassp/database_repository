@@ -61,6 +61,19 @@ class DatabaseRepository<T extends DatabaseStorable>
     return serializer.deserialize(result.payload);
   }
 
+  /// Gets and executes a store Query for `element`
+  ///
+  /// Throws [QueryFailedException] if the query was not successful
+  Future<T> store(T element) async {
+    final result = await executeQuery(getStoreQuery(element));
+
+    if (result.wasNotSuccessful) {
+      throw QueryFailedException(result);
+    }
+
+    return serializer.deserialize(result.payload);
+  }
+
   /// Gets and executes a delete Query for `element`
   ///
   /// Throws [QueryFailedException] if the query was not successful
@@ -99,12 +112,13 @@ class DatabaseRepository<T extends DatabaseStorable>
 
     final elems = <T>[];
     for (final json in result.payload.values) {
-      if (json is! JSON) {
+      try {
+        final elem = serializer.deserialize(Map<String, dynamic>.from(json));
+        elems.add(elem);
+        // ignore: avoid_catches_without_on_clauses
+      } catch (_) {
         continue;
       }
-
-      final elem = serializer.deserialize(json);
-      elems.add(elem);
     }
 
     return elems;
@@ -125,12 +139,13 @@ class DatabaseRepository<T extends DatabaseStorable>
 
     final elems = <T>[];
     for (final json in result.payload.values) {
-      if (json.runtimeType != JSON) {
+      try {
+        final elem = serializer.deserialize(Map<String, dynamic>.from(json));
+        elems.add(elem);
+        // ignore: avoid_catches_without_on_clauses
+      } catch (_) {
         continue;
       }
-
-      final elem = serializer.deserialize(json);
-      elems.add(elem);
     }
 
     return elems;

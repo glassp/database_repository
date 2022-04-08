@@ -1,4 +1,10 @@
 # CHANGELOG
+## 1.3.0
+ - **FEATURE**
+   - add new utility function store
+ - **IMPROVEMENT**
+   - Improve deserialization with safer type check
+  
 ## 1.2.2
  - **DOCS:** 
     - add example/README.md
