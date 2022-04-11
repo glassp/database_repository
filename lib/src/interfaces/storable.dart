@@ -12,4 +12,10 @@ abstract class DatabaseStorable {
 
   /// It is assumed that objects with ids are managed.
   bool get isManaged => id != null;
+
+  /// The name of the  collection to use.
+  /// Usually this will be the name of the runtime type.
+  /// You may prefer to override this as dart the name of the runtime type
+  /// may be a cryptic one if compiled for the web. E.g. minified:cI instead of User.
+  String get collection => runtimeType.toString();
 }

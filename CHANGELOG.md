@@ -1,4 +1,7 @@
 # CHANGELOG
+## 1.3.1
+ - **IMPROVEMENT**
+   - allow collection name of database storable to be manually adjusted.
 ## 1.3.0
  - **FEATURE**
    - add new utility function store
