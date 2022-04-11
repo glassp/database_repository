@@ -20,10 +20,12 @@ export 'src/exceptions/adapter_name_violation.dart';
 export 'src/exceptions/constraint_unsupported.dart';
 export 'src/exceptions/no_such_adapter.dart';
 export 'src/exceptions/query_failed.dart';
+export 'src/exceptions/serialization_exception.dart';
 
 export 'src/interfaces/serializer.dart';
 export 'src/interfaces/storable.dart';
 
 export 'src/mixins/query.dart';
 
+export 'src/util/json.dart';
 export 'src/util/serializer.dart';

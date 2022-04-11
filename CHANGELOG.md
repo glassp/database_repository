@@ -1,4 +1,11 @@
 # CHANGELOG
+## 2.0.0
+ - **BREAKING CHANGE**
+   - use new collection name of database storable
+   - assume serializer can serialize empty json
+ - **IMPROVEMENT**
+   - export JSON typedef
+   
 ## 1.3.1
  - **IMPROVEMENT**
    - allow collection name of database storable to be manually adjusted.

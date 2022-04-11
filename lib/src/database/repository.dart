@@ -99,12 +99,14 @@ class DatabaseRepository<T extends DatabaseStorable>
     return serializer.deserialize(result.payload);
   }
 
+  String get _entityName => serializer.deserialize({}).collection;
+
   /// Gets and executes a read Query to fetch an entity of Type [T] with the
   /// given `id`
   ///
   /// Throws [QueryFailedException] if the query was not successful
   Future<List<T>> readAll() async {
-    final result = await executeQuery(getReadAllQuery(type: T));
+    final result = await executeQuery(getReadAllQuery(entityName: _entityName));
 
     if (result.wasNotSuccessful) {
       throw QueryFailedException(result);
@@ -130,8 +132,11 @@ class DatabaseRepository<T extends DatabaseStorable>
   /// Throws [QueryFailedException] if the query was not successful
   Future<List<T>> readAllWhere(
       {List<Constraint> where = const [], int? limit}) async {
-    final result = await executeQuery(
-        getReadAllWhereQuery(type: T, where: where, limit: limit));
+    final result = await executeQuery(getReadAllWhereQuery(
+      entityName: _entityName,
+      where: where,
+      limit: limit,
+    ));
 
     if (result.wasNotSuccessful) {
       throw QueryFailedException(result);

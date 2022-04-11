@@ -8,14 +8,14 @@ mixin QueryMixin<T extends DatabaseStorable> {
 
   /// generates a query that execute a create operation on the database
   Query getCreateQuery(T element) => Query(
-        entityName: element.runtimeType.toString(),
+        entityName: element.collection,
         action: QueryAction.create,
         payload: element.toJson(),
       );
 
   /// generates a query that execute a update operation on the database
   Query getUpdateQuery(T element) => Query(
-        entityName: element.runtimeType.toString(),
+        entityName: element.collection,
         action: QueryAction.update,
         payload: element.toJson(),
       );
@@ -23,12 +23,12 @@ mixin QueryMixin<T extends DatabaseStorable> {
   /// generates a query that execute a read operation on the database by
   /// applying a search function
   Query getReadAllWhereQuery({
-    required Type type,
+    required String entityName,
     List<Constraint> where = const [],
     int? limit,
   }) =>
       Query(
-        entityName: type.toString(),
+        entityName: entityName,
         action: QueryAction.read,
         where: where,
         limit: limit,
@@ -45,12 +45,12 @@ mixin QueryMixin<T extends DatabaseStorable> {
 
   /// generates a query that execute a read operation on the database fetching
   /// all objects
-  Query getReadAllQuery({required Type type}) =>
-      getReadAllWhereQuery(type: type);
+  Query getReadAllQuery({required String entityName}) =>
+      getReadAllWhereQuery(entityName: entityName);
 
   /// generates a query that execute a delete operation on the database
   Query getDeleteQuery(T element) => Query(
-      entityName: element.runtimeType.toString(),
+      entityName: element.collection,
       action: QueryAction.delete,
       payload: element.toJson());
 

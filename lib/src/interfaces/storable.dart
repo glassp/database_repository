@@ -1,6 +1,8 @@
 import '../deps.dart';
 
 /// interface for objects that can be stored in a database
+/// This class should also contain a from json constructor that allows to
+/// construct via an empty json
 abstract class DatabaseStorable {
   /// Serialize object to JSON
   JSON toJson();
@@ -16,6 +18,7 @@ abstract class DatabaseStorable {
   /// The name of the  collection to use.
   /// Usually this will be the name of the runtime type.
   /// You may prefer to override this as dart the name of the runtime type
-  /// may be a cryptic one if compiled for the web. E.g. minified:cI instead of User.
+  /// may be a cryptic one if compiled for the web. E.g. minified:cI instead
+  /// of User.
   String get collection => runtimeType.toString();
 }
