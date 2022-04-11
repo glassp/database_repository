@@ -1,4 +1,8 @@
 # CHANGELOG
+## 2.0.0+1
+ - **INTERNAL**
+   - Resolve entity name using  imporved function
+   
 ## 2.0.0
  - **BREAKING CHANGE**
    - use new collection name of database storable

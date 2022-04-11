@@ -99,7 +99,7 @@ class DatabaseRepository<T extends DatabaseStorable>
     return serializer.deserialize(result.payload);
   }
 
-  String get _entityName => serializer.deserialize({}).collection;
+  String get _entityName => serializer.construct().collection;
 
   /// Gets and executes a read Query to fetch an entity of Type [T] with the
   /// given `id`
