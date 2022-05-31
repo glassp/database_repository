@@ -36,8 +36,13 @@ mixin QueryMixin<T extends DatabaseStorable> {
 
   /// generates a query that execute a read operation on the database for an
   /// object with a given id.
-  Query getReadQuery(String id, {required Type type}) => Query(
-        entityName: type.toString(),
+  Query getReadQuery(
+    String id, {
+    @Deprecated('Do not use type anymore. Prefer entityName') Type? type,
+    required String entityName,
+  }) =>
+      Query(
+        entityName: entityName,
         action: QueryAction.read,
         payload: {"id": id},
         limit: 1,

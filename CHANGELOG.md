@@ -1,4 +1,7 @@
 # CHANGELOG
+## 2.0.1
+ - **BUG FIX**
+   - getReadQuery now requires a String instead of a Type to passed.
 ## 2.0.0+1
  - **INTERNAL**
    - Resolve entity name using  imporved function

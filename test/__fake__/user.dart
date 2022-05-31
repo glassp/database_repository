@@ -1,5 +1,4 @@
 import 'package:database_repository/database_repository.dart';
-import 'package:database_repository/src/util/json.dart';
 
 class User extends DatabaseStorable {
   @override

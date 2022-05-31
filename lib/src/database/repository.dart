@@ -90,7 +90,8 @@ class DatabaseRepository<T extends DatabaseStorable>
   ///
   /// Throws [QueryFailedException] if the query was not successful
   Future<T> read(String id) async {
-    final result = await executeQuery(getReadQuery(id, type: T));
+    final result =
+        await executeQuery(getReadQuery(id, entityName: _entityName));
 
     if (result.wasNotSuccessful) {
       throw QueryFailedException(result);
